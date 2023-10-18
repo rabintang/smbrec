@@ -1,0 +1,56 @@
+{
+    "version": "v1",
+    "model_clazz": "examples.config_usage.DNN",
+    "model_params": {
+        "units": 16,
+        "activation": "relu"
+    },
+    "feature_config_path": "conf/adult_features.json",
+    "train_params": {
+        "data": {
+            "path": "examples/data/adult/adult.data",
+            "format": "csv",
+            "format_params": {
+                "name": "age,workclass,fnlgwt,education,education_num,marital_status,occupation,relationship,race,sex,capital_gain,capital_loss,hours_per_week,country,income",
+                "delim": ",",
+                "header": 1
+            },
+            "mode": "batch",
+            "batch_size": 128,
+            "epochs": 1
+        },
+        "mode": "batch",
+        "model_path": "tmp/config_usage/${version}/models/",
+        "checkpoint": {
+            "path": "tmp/config_usage/${version}/checkpoints/",
+            "steps": 100
+        },
+        "random_seed": 2021,
+        "loss": "sigmoid_cross_entropy_with_logits",
+        "optimizer": {
+            "method": "tensorflow.compat.v1.train.AdamOptimizer",
+            "params": {
+                "learning_rate": 0.01
+            }
+        }
+    },
+    "eval_params": {
+        "data": {
+            "path": "examples/data/adult/adult.test",
+            "format": "csv",
+            "format_params": {
+                "name": "age,workclass,fnlgwt,education,education_num,marital_status,occupation,relationship,race,sex,capital_gain,capital_loss,hours_per_week,country,income",
+                "delim": ",",
+                "header": 1
+            },
+            "mode": "batch",
+            "batch_size": 128,
+            "epochs": 1
+        },
+        "metrics": ["auc", "precision"],
+        "predictions_path": "tmp/config_usage/${version}/predictions"
+    },
+    "export_params": {
+        "path": "tmp/config_usage/${version}/exports/"
+    }
+}

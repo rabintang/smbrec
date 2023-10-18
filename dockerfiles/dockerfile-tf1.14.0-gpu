@@ -1,0 +1,39 @@
+FROM tensorflow/tensorflow:1.14.0-gpu-py3
+
+ARG https_proxy
+ARG http_proxy
+
+ARG BASE_PATH=/usr/local
+ARG PRO_PATH=/var/smbrec
+ARG DEBIAN_FRONTEND=noninteractive
+
+ADD . $PRO_PATH
+WORKDIR $PRO_PATH
+
+ENV JAVA_HOME=/usr/local/java/jdk1.8.0_351 \
+    HADOOP_HOME=/opt/hadoop
+
+ENV SMBREC_TMP_DIR=/tmp/smbrec/ \
+    JRE_HOME=${JAVA_HOME}/jre \
+    HADOOP_HDFS_HOME=${HADOOP_HOME} \
+    HADOOP_NAMENODE="http://xxx.com:50070" \
+    LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HADOOP_HOME}/lib/native:${JAVA_HOME}/jre/lib/amd64/server:/usr/local/cuda/lib64 \
+    TF_XLA_FLAGS=--tf_xla_cpu_global_jit \
+    PATH=$PATH:${HADOOP_HOME}/bin:$TF_XLA_FLAGS
+
+RUN cd $PRO_PATH &&\
+    apt-get update &&\
+    apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
+            build-essential \
+            ca-certificates \
+            tzdata \
+            git &&\
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
+    echo "Asia/Shanghai" > /etc/timezone &&\
+    tar -zvxf 3rdparty/hadoop.tar.gz -C /opt &&\
+    dpkg-reconfigure -f noninteractive tzdata &&\
+    mkdir /usr/local/java &&\
+    tar -zvxf 3rdparty/jdk-8u351-linux-x64.tar.gz -C /usr/local/java &&\
+    python setup.py install &&\
+    pip uninstall -y prettytable && pip install prettytable==2.5.0
+

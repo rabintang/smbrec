@@ -1,0 +1,243 @@
+[
+	{
+		"name": "label",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float",
+		"is_label": 1
+	},
+	{
+		"name": "I1",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I2",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I3",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I4",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I5",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I6",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I7",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I8",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I9",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I10",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I11",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I12",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "I13",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float"
+	},
+	{
+		"name": "C1",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C2",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C3",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C4",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C5",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C6",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C7",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C8",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C9",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C10",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C11",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C12",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C13",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C14",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C15",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C16",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C17",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C18",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C19",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C20",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C21",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C22",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C23",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C24",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C25",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "C26",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	}
+]

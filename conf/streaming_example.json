@@ -1,0 +1,57 @@
+{
+    "version": "v1",
+    "desc": "分钟级实时流样本示例",
+    "clazz": "examples.simple_example.DNN",
+    "model_params": {
+        "units": 16,
+        "activation": "relu"
+    },
+    "train_params": {
+        "data": {
+            "path": "examples/data/streaming/1mins/",
+            "format": "tfrecord",
+            "mode": "streaming",
+            "streaming_params": {
+                "buffer_size": 10,
+                "checkpoint": "./tmp/checkpoint/${version}",
+                "start_point": "20211221 16:20",
+                "timeout": 5,
+                "time_fmt": "%Y%m%d %H:%M"
+            }
+        },
+        "mode": "batch",
+        "model_path": "./tmp/models/streaming/",
+        "batch_size": 512,
+        "random_seed": 2021,
+        "tensorboard_dir": "./tmp/tensorboard/${version}",
+        "checkpoint": {
+            "path": "./tmp/checkpoints/${version}",
+            "steps": 5,
+            "seconds": 0
+        },
+        "loss": "binary_crossentropy",
+        "optimizer": {
+            "method": "tensorflow.keras.optimizers.Adam",
+            "params": {
+                "learning_rate": 0.01
+            }
+        }
+    },
+    "eval_params": {
+        "data": {
+            "path": "examples/data/criteo/criteo_sample.txt",
+            "format": "csv",
+            "format_params": {
+                "header": 1
+            }
+        },
+        "metrics": ["binary_crossentropy"]
+    },
+    "export_params": {
+        "path": "./tmp/servings/${version}",
+        "mode": "streaming",
+        "streaming_params": {
+            "seconds": 120
+        }
+    }
+}

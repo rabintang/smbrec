@@ -1,0 +1,42 @@
+{
+    "version": "v1",
+    "clazz": "examples.multi_task.DNN",
+    "model_params": {
+        "units": [512, 256]
+    },
+    "train_params": {
+        "data": {
+            "path": "hdfs://path/to/train/data/${date}",
+            "format": "tfrecord",
+            "compression_type": "GZIP"
+        },
+        "model_path": "hdfs://path/to/model",
+        "batch_size": 512,
+        "checkpoint_steps": 10000,
+        "random_seed": 2021,
+        "loss": [
+            {"label": "label1", "loss": "binary_crossentropy", "weight": 0.4},
+            {"label": "label2", "loss": "binary_crossentropy", "weight": 0.6}
+        ],
+        "optimizer": {
+            "method": "AdamOptimizer",
+            "params": {
+                "learning_rate": 0.01
+            }
+        }
+    },
+    "eval_params": {
+        "data": {
+            "path": "hdfs://path/to/eval/data/${date}",
+            "format": "tfrecord",
+            "compression_type": "GZIP"
+        },
+        "metrics": [
+            {"label": "label1", "metrics": ["mse"]},
+            {"label": "label2", "metrics": ["mse"]}
+        ]
+    },
+    "export_params": {
+        "path": "hdfs://path/to/model"
+    }
+}

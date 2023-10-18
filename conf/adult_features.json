@@ -1,0 +1,93 @@
+[
+	{
+		"name": "income",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "float",
+		"is_label": 1
+	},
+	{
+		"name": "age",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "workclass",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "fnlgwt",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "education",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "education_num",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "marital_status",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "occupation",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "relationship",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "race",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "sex",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	},
+	{
+		"name": "capital_gain",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "capital_loss",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "hours_per_week",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "int"
+	},
+	{
+		"name": "country",
+		"format": "val",
+		"dimension": 0,
+		"data_type": "string"
+	}
+]

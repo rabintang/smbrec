@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package pangu;  // 盘古，意为开天辟地，为后方基业奠定基础
+
+option cc_enable_arenas = true;
+option java_package = "com.meiyou.pangu";
+
+
+message KeyValue {
+  oneof kind {
+    string str_value = 1;
+    int64 int_value = 2;
+  }
+}
+
+message Keys {
+  map<string, KeyValue> key = 1;
+}
+
+message QueryKeys {
+  Keys user_keys = 3;
+  Keys context_keys = 4;
+  repeated Keys item_keys = 5;
+}
+
+message FeatureServingRequest {
+  enum DataVersion {        // Response返回的数据格式
+    TF_EXAMPLES = 0;        // 采用tf.Examples格式返回数据
+  }
+
+  string req_id = 1;        // 请求id
+  DataVersion data_version = 2;  // 响应体格式
+  QueryKeys keys = 3;       // 当前请求包含的key
+  string version = 4;       // 特征版本
+}
+
+message FeatureSnapshotRequest {
+  enum DataVersion {        // 写入快照的数据格式
+    JSON = 0;               // 采用Json格式返回数据
+    PROTOBUF = 1;           // 采用Protobuf格式返回数据
+  }
+
+  string req_id = 1;            // 请求id
+  DataVersion data_version = 2;  // 响应体格式
+  QueryKeys keys = 3;
+}

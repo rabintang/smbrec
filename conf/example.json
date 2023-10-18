@@ -1,0 +1,71 @@
+{
+    "version": "v1",                                                           # 模型版本
+    "desc": "分钟级实时流样本示例",                                               # 模型说明
+    "clazz": "examples.simple_example.DNN",                                    # 模型类路径
+    "model_params": {                                                          # 模型参数，每个模型需要的参数不同，由用户自定义输入
+        "units": 16,
+        "activation": "relu"
+    },
+    "train_params": {                                                          # 模型训练参数
+        "data": {                                                              # 训练样本配置
+            "path": "examples/data/streaming/1mins/20230101",                  # 训练样本路径
+            "cache_path": "local/data/streaming/1mins/20230101",               # 训练样本本地缓存路径
+            "days": 2,                                                         # 训练集天数，path的根路径必须是 %Y%m%d 格式
+            "format": "tfrecord",                                              # 训练样本类型，可选 tfrecord，csv
+            "remove_labels": 0,                                                # 是否从inputs移除labels
+            "format_params": {                                                 # 格式参数，仅CSV有格式参数
+                "names": "n1,n2",                                              # 列名
+                "delim": ",",                                                  # 分隔符
+                "na_value": "NaN",                                             # 识别为NaN的字符串
+                "header": 1,                                                   # 指示文件第一行是否为列名
+                "select_columns": "n1"                                         # 需要解析的列序号，默认为空，表示都解析
+            },
+            "mode": "streaming",                                               # 训练样本模式，可选 streaming、batch，默认batch
+            "batch_size": 512,                                                 # 训练样本批大小
+            "epochs": 1,                                                       # 数据重复轮数，默认1
+            "compression_type": "GZIP",                                        # 数据压缩类型，可选 ZLIB、GZIP
+            "streaming_params": {                                              # 流式样本特有配置，即 mode=streaming时的参数
+                "buffer_size": 10,                                             # 缓存的训练样本文件数
+                "checkpoint": "./tmp/checkpoint/${version}",                   # 训练进度checkpoint，用于中断恢复
+                "start_point": "20211221 16:20",                               # 起始样本时间，
+                "timeout": 5,                                                  # 样本处理的超时时间
+                "time_fmt": "%Y%m%d %H:%M",                                    # 样本文件的时间格式
+                "ready_flag": "_SUCCESS"                                       # 目录就绪标识文件
+            }
+        },
+        "mode": "batch",                                                       # 训练模式，可选 batch，online
+        "model_path": "./tmp/models/streaming/",                               # 模型checkpoint持久化保存路径
+        "random_seed": 2021,                                                   # 随机种子
+        "tensorboard_dir": "./tmp/tensorboard/${version}",                     # tensorboard保存路径
+        "checkpoint": {                                                        # 模型checkpoint配置
+            "path": "./tmp/checkpoints/${version}",                            # checkpoint本地临时保存路径
+            "steps": 5,                                                        # checkpoint的steps
+            "seconds": 0                                                       # checkpoint的间隔时间，单位S
+        },
+        "loss": "binary_crossentropy",                                         # 损失函数
+        "optimizer": {                                                         # 优化器配置
+            "method": "tensorflow.keras.optimizers.Adam",                      # 优化器类
+            "params": {                                                        # 优化器参数配置，每个优化器参数不同
+                "learning_rate": 0.01
+            }
+        }
+    },
+    "eval_params": {                                                           # 模型评估配置
+        "data": {                                                              # 评估样本配置，参数同 train_params.data
+            "path": "examples/data/criteo/criteo_sample.txt",
+            "format": "csv",
+            "format_params": {
+                "header": 1
+            }
+        },
+        "metrics": ["binary_crossentropy"]                                     # 评估指标，枚举值
+    },
+    "export_params": {                                                         # 模型导出配置
+        "path": "./tmp/servings/${version}",                                   # 模型导出的保存路径
+        "mode": "streaming",                                                   # 模型导出的模式，可选 streaming，batch
+        "compress": 1,                                                         # 是否对模型压缩，默认不压缩
+        "streaming_params": {                                                  # streaming模式，模型导出配置
+            "seconds": 120                                                     # 模型导出的时间间隔
+        }
+    }
+}
