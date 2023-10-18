@@ -8,10 +8,8 @@ build/
 tmp/
 .DS_Store
 .idea/
-examples/data
 bin/env.sh
 test.py
-examples/random_data
 data/
 logs/
 3rdparty
